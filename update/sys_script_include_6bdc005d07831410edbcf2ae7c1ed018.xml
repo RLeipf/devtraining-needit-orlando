@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.GetEmailAddress</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Script Include to return an email address by accessing the sys_user table. When called the calling client side script passes the sys_id of the user, who's email should be returned</description>
+        <name>GetEmailAddress</name>
+        <script><![CDATA[var GetEmailAddress = Class.create();
+//Extend global.AbstractAjaxProcessor
+GetEmailAddress.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	//define getEmail function
+	getEmail: function(){
+		//create a glideRecord for the Usertable
+		var userRecord = new GlideRecord("sys_user");
+		//retrieve User record from the sys_user table with the userID and store it in the userRecord
+		userRecord.get(this.getParameter('sysparm_userID'));
+		//return email Address of the record ( + '' to make sure, that it is a string when returning);
+		return userRecord.email + '';
+	},
+    type: 'GetEmailAddress'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-09-03 08:35:23</sys_created_on>
+        <sys_id>6bdc005d07831410edbcf2ae7c1ed018</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>GetEmailAddress</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_6bdc005d07831410edbcf2ae7c1ed018</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-09-03 10:59:01</sys_updated_on>
+    </sys_script_include>
+</record_update>
